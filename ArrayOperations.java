@@ -69,6 +69,40 @@ public class ArrayOperations
         return max;
     }
 
+     /**
+     * Finds and returns the sum of the numbers in the even indexes 
+     * of an array
+     * @param givenArray
+     * @return The sum of the number in even indexes.
+     */
+    public static int getSumOfEvenIndexes (int[] givenArray)
+    {
+        int sumOfEvenIndexes = 0;
+        for (int i = 0; i < givenArray.length; i = i + 2)
+        {
+            sumOfEvenIndexes = sumOfEvenIndexes + givenArray [i];
+        }
+
+        return sumOfEvenIndexes;
+    }
+
+    /**
+     * Finds and returns the sum of the numbers in the odd indexes
+     * of an array
+     * @param givenArray
+     * @return
+     */
+    public static int getSumOfOddIndexes (int[] givenArray)
+    {
+        int sumOfOddIndexes = 0;
+
+        for (int i = 1; i < givenArray.length; i = i + 2)
+        {
+            sumOfOddIndexes = sumOfOddIndexes + givenArray [i];
+        }
+
+        return sumOfOddIndexes;
+    }
     
 
 
