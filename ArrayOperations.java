@@ -104,6 +104,30 @@ public class ArrayOperations
         return sumOfOddIndexes;
     }
     
+    /**
+     * calculates the average of the given array and returns it with the 
+     * differences of each element from average
+     * @param givenArray array to take average
+     * @return an array of differences from the average
+     */
+    public static int [] differenceFromAverage(int [] givenArray)
+    {
+        int sum = 0;
+        
+        for(int elements : givenArray)
+        {
+            sum += elements;
+        }
+
+        int average = sum / givenArray.length;
+
+        for(int i = 0; i < givenArray.length; i++)
+        {
+            givenArray[i] -= average;
+        }
+
+        return givenArray;
+    }
 
 
 
