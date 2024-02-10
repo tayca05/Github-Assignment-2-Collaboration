@@ -49,6 +49,8 @@ public class ArrayOperations
 
     private static void createArray() 
     {
+        Scanner in = new Scanner (System.in);
+        
         int length = 0;
         System.out.print("Enter the length of the array: ");
         boolean inputIsValid = false;
