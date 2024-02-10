@@ -9,41 +9,67 @@ public class ArrayOperations
     public static void main(String[] args) 
     {
         Scanner in = new Scanner(System.in);
-        int choice = in.nextInt();
+        
+        int choice = 0;
 
-        if (choice == 1) 
+        while (choice != 5) 
         {
-            createArray();
-        } 
-        else if (choice == 2) 
-        {
-            int min = findMinimum(array);
-            int max = findMaximum(array);
-            System.out.println("Minimum value: " + min);
-            System.out.println("Maximum value: " + max);
-        } 
-        else if (choice == 3) 
-        {
-            int[] differences = differenceFromAverage(array);
-            System.out.println("Differences from average: " + Arrays.toString(differences));
-        } 
-        else if (choice == 4) 
-        {
-            int sumEven = getSumOfEvenIndexes(array);
-            int sumOdd = getSumOfOddIndexes(array);
-            System.out.println("Sum of elements with even indexes: " + sumEven);
-            System.out.println("Sum of elements with odd indexes: " + sumOdd);
-        } 
-        else if (choice == 5) 
-        {
-            System.out.println("Exiting...");
-        } 
-        else 
-        {
-            System.out.println("Invalid choice. Please try again.");
+            displayTheMenu();
+            choice = in.nextInt();
+
+            if (choice == 1) 
+            {
+                createArray();
+            } 
+            else if (choice == 2 && array != null) 
+            {
+                int min = findMinimum(array);
+                int max = findMaximum(array);
+                System.out.println("Minimum value: " + min);
+                System.out.println("Maximum value: " + max);
+            } 
+            else if (choice == 3 && array != null) 
+            {
+                int[] differences = differenceFromAverage(array);
+                System.out.println("Differences from average: " + Arrays.toString(differences));
+            } 
+            else if (choice == 4 && array != null) 
+            {
+                int sumEven = getSumOfEvenIndexes(array);
+                int sumOdd = getSumOfOddIndexes(array);
+                System.out.println("Sum of elements with even indexes: " + sumEven);
+                System.out.println("Sum of elements with odd indexes: " + sumOdd);
+            } 
+            else if (choice == 5) 
+            {
+                System.out.println("Exiting...");
+            } 
+            else if (array == null)
+            {
+                System.out.println("Please first create an array!");
+            }
+            else 
+            {
+                System.out.println("Invalid choice. Please try again.");
+            }
+
         }
         
         in.close();
+    }
+
+     public static void displayTheMenu ()
+    {
+        String menu = """
+                
+        1) Create an array.
+        2) Show the minumum and the maximum values of the array.
+        3) Show the differences from the average of the array's values.
+        4) Show the sum of the values in odd and even indexes.
+        5) Exit the menu.
+        Choice:     """;
+        
+        System.out.print ("The Menu: " + menu + " ");
     }
 
 
@@ -155,6 +181,8 @@ public class ArrayOperations
      */
     public static int [] differenceFromAverage(int [] givenArray)
     {
+        int [] changedArray = new int[givenArray.length];
+        
         int sum = 0;
         
         for(int elements : givenArray)
@@ -166,9 +194,9 @@ public class ArrayOperations
 
         for(int i = 0; i < givenArray.length; i++)
         {
-            givenArray[i] -= average;
+            changedArray[i] = givenArray[i] - average;
         }
 
-        return givenArray;
+        return changedArray;
     }
 }
