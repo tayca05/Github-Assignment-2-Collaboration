@@ -9,8 +9,46 @@ public class ArrayOperations
     public static void main(String[] args) 
     {
         Scanner in = new Scanner(System.in);
+        int choice = in.nextInt();
 
-        int length;
+        if (choice == 1) 
+        {
+            createArray();
+        } 
+        else if (choice == 2) 
+        {
+            int min = findMinimum(array);
+            int max = findMaximum(array);
+            System.out.println("Minimum value: " + min);
+            System.out.println("Maximum value: " + max);
+        } 
+        else if (choice == 3) 
+        {
+            int[] differences = differenceFromAverage(array);
+            System.out.println("Differences from average: " + Arrays.toString(differences));
+        } 
+        else if (choice == 4) 
+        {
+            int sumEven = getSumOfEvenIndexes(array);
+            int sumOdd = getSumOfOddIndexes(array);
+            System.out.println("Sum of elements with even indexes: " + sumEven);
+            System.out.println("Sum of elements with odd indexes: " + sumOdd);
+        } 
+        else if (choice == 5) 
+        {
+            System.out.println("Exiting...");
+        } 
+        else 
+        {
+            System.out.println("Invalid choice. Please try again.");
+        }
+    }
+
+    in.close();
+
+    private static void createArray() 
+    {
+        int length = 0;
         System.out.print("Enter the length of the array: ");
         boolean inputIsValid = false;
         
@@ -19,7 +57,7 @@ public class ArrayOperations
             if(in.hasNextInt())
             {
                 length = in.nextInt();
-                if(length > 0)
+                if (length > 0)
                 {
                     inputIsValid = true; 
                 }
@@ -31,15 +69,17 @@ public class ArrayOperations
             else
             {
                 System.out.print("Length should be an integer! Please try again: ");
-                in = new Scanner(System.in);
             }
         }
-        
 
+        array = new int[length];
+        Random random = new Random();
+        for (int i = 0; i < length; i++) 
+        {
+            array[i] = random.nextInt(101);
+        }
+        System.out.println("Array created: " + Arrays.toString(array));
     }
-
-
-
 
     public static int findMinimum(int[] givenArray)
     {
@@ -128,7 +168,4 @@ public class ArrayOperations
 
         return givenArray;
     }
-
-
-
 }
