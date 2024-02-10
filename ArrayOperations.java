@@ -42,9 +42,10 @@ public class ArrayOperations
         {
             System.out.println("Invalid choice. Please try again.");
         }
+        
+        in.close();
     }
 
-    in.close();
 
     private static void createArray() 
     {
